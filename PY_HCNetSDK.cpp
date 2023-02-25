@@ -1,20 +1,56 @@
-﻿// PY_HCNetSDK.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-//
+﻿#include <iostream>
+#include <array>
+#include <algorithm>
 
-#include <iostream>
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    typedef struct tagNET_DVR_SOCKS_PROXY_PARA
+    {
+        BYTE byIP[129];
+        BYTE byAuthType;
+        WORD wPort;
+        BYTE byRes2[64];
+    } NET_DVR_SOCKS_PROXY_PARA, * LPNET_DVR_SOCKS_PROXY_PARA;
+
+
+    int arr[] = { 1, 2, 3, 4, 5 };
+    const int n = sizeof(arr) / sizeof(arr[0]);
+
+    std::array<int, n> first;
+    std::array<int, n > arr1[5];
+
+
+    std::copy(std::begin(arr), std::end(arr), first.begin());
+
+
+    for (int a = 0; a < 5; a++)
+    {
+        std::cout << first[a] << ' ';
+        arr1[a] = first[a];
+    }
+
+    cout << arr[0] << endl;
+    cout << arr1[0] << endl;
+
+    cout << typeid(arr).name() << "\n";
+    cout << typeid(arr1).name() << "\n";
+
+
+    std::cout << std::endl;
+
+
+    return 0;
 }
+// c风格数组转std::array 用std::copy
+// std::array转c风格数组用for赋值
 
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
+// 两个函数，传c风格数组返回std::array
+// 反之
 
-// 入门使用技巧: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
+// 一定要可以自动判断类型
+auto trans(auto i) {
+
+
+}
